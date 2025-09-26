@@ -150,9 +150,10 @@ jobs:
 
     - name: Upload release files
       env:
-        run: |
-          gh --repo "$GITHUB_REPOSITORY" release create test --target main --title "test" --notes "test" ./dist/*.whl ./dist/*.tar.gz
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        gh --repo "$GITHUB_REPOSITORY" release create test --target main --title "test" --notes "test" ./dist/*.whl ./dist/*.tar.gz
+
       # if: startsWith(github.ref, 'refs/tags/')
       # uses: softprops/action-gh-release@v2
       # with:
